@@ -1,4 +1,4 @@
-""" 
+"""
     Made by:
     Alan Alcántara Ávila
     Carlos Alberto Sánchez Calderón
@@ -6,7 +6,6 @@
 """
 
 from cleaners_model import Cleaners_Model
-import seaborn as sns
 import matplotlib.pyplot as plt
 import time
 
@@ -35,25 +34,14 @@ time_needed = tiempo
 percentage_clean_cells = (1 - model.num_garbage / (ancho * alto)) * 100
 num_movements = stepCounter
 
-# Create the charts
+# Create the chart
 plt.figure(figsize=(15, 5))
 
-# # Chart 1: Time needed
-# plt.subplot(1, 3, 1)
-# plt.bar(['Time'], [time_needed])
-# plt.ylabel('Seconds')
-
-# Chart 2: Percentage of clean cells
 initial_percentage_clean_cells = percentage_garbage
 final_percentage_clean_cells = (1 - model.num_garbage / (ancho * alto)) * 100
 plt.subplot(1, 3, 2)
 plt.bar(['Initial', 'Final'], [initial_percentage_clean_cells, final_percentage_clean_cells])
 plt.ylabel('Percentage of Clean Cells')
 plt.title('Clean Cells at the Beginning and End of Simulation')
-
-# Chart 3: Number of movements
-# plt.subplot(1, 3, 3)
-# plt.bar(['Movements'], [num_movements])
-# plt.ylabel('Number of Movements')
 
 plt.show()
