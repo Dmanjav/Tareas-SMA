@@ -8,6 +8,7 @@
 from cleaners_model import Cleaners_Model
 import matplotlib.pyplot as plt
 import time
+import seaborn as sns
 
 ancho = 5
 alto = 5
@@ -44,4 +45,10 @@ plt.bar(['Initial', 'Final'], [initial_percentage_clean_cells, final_percentage_
 plt.ylabel('Percentage of Clean Cells')
 plt.title('Clean Cells at the Beginning and End of Simulation')
 
+plt.show()
+
+garbage = model.datacollector.get_model_vars_dataframe()
+# Plot the Gini coefficient over time
+g = sns.lineplot(data=garbage)
+g.set(title="Garbage over Steps")
 plt.show()
