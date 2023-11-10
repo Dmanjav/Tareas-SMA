@@ -81,7 +81,9 @@ class MoneyModel(mesa.Model):
         self.datacollector = mesa.DataCollector(
             model_reporters={"Gini": compute_gini}, agent_reporters={"Wealth": "wealth"}
         )
+        
 
+        
     def step(self):
         """Advance the model by one step."""
         self.datacollector.collect(self)

@@ -31,7 +31,7 @@ class Cleaner_Bot(mesa.Agent):
                 
         self.model.grid.move_agent(self, new_position)
         
-        
+
 class Cleaners_Model(mesa.Model):
     def __init__(self,M,N, num_agents, percentage_garbage,stepsMax):
         self.num_agents = num_agents
@@ -58,13 +58,7 @@ class Cleaners_Model(mesa.Model):
             self.grid.place_agent(temp,(0,0))
             self.schedule.add(temp)
 
+
     def step(self):
         self.steps_max -= 1
         self.schedule.step()
-
-
-        
-        
-    
-
-        

@@ -53,6 +53,20 @@ g = sns.lineplot(data=gini)
 g.set(title="Gini Coefficient over Time", ylabel="Gini Coefficient");
 
 agent_wealth = model.datacollector.get_agent_vars_dataframe()
-agent_wealth.head()
+# agent_wealth.head()
+
+# sns.scatterplot()
+# y = step()
+
+last_step = agent_wealth.index.get_level_values("Step").max()
+end_wealth = agent_wealth.xs(last_step, level="Step")["Wealth"]
+# Create a histogram of wealth at the last step
+g = sns.histplot(end_wealth, discrete=True)
+g.set(
+    title="Distribution of wealth at the end of simulation",
+    xlabel="Wealth",
+    ylabel="Number of agents",
+);
+
 
 plt.show()
