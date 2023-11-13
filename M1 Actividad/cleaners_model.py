@@ -1,6 +1,9 @@
 from typing import Any
 import mesa
 
+def get_garbage(model):
+    return model.num_garbage
+
 class Garbage(mesa.Agent):
     def __init__(self, unique_id,model):
         super().__init__(unique_id,model)
@@ -57,8 +60,11 @@ class Cleaners_Model(mesa.Model):
             temp = Cleaner_Bot(i + self.num_garbage,self)
             self.grid.place_agent(temp,(0,0))
             self.schedule.add(temp)
-
+            self.datacollector = mesa.DataCollector(
+                        model_reporters={"Garbage over time": get_garbage}, agent_reporters={"Garbage": "garbage"}
+                    )
 
     def step(self):
         self.steps_max -= 1
         self.schedule.step()
+        self.datacollector.collect(self)
